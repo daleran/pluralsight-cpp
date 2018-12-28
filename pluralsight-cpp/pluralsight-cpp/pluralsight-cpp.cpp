@@ -6,17 +6,16 @@
 #include <string>
 #include <time.h> 
 #include <random> 
+#include "Functions.h"
 
 using namespace std;
 
 int main()
 {
-	
 	bool run = true;
 
 	typedef std::mt19937 MyRNG;  
-	uint32_t seed_val = time(NULL);
-
+	uint32_t seed_val = (uint32_t)time(NULL);
 	MyRNG rng;
 	rng.seed(seed_val);
 	uniform_int_distribution<uint32_t> uint_dist1_10(1, 10);
@@ -26,21 +25,14 @@ int main()
 
 	while (run)
 	{
-		string eval = "";
+		
 		cout << "Guess a number (1-10): ";
 		cin >> guess;
 
-		if (guess < answer)
+		string eval = EvalStatement(guess, answer);
+		
+		if (guess == answer)
 		{
-			eval = "less than";
-		}
-		else if (guess > answer)
-		{
-			eval = "greater than";
-		}
-		else
-		{
-			eval = "";
 			run = false;
 		}
 

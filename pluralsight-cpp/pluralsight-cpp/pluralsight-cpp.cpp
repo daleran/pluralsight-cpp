@@ -4,40 +4,30 @@
 #include "pch.h"
 #include <iostream>
 #include <string>
-#include <time.h> 
-#include <random> 
-#include "Functions.h"
+#include "Account.h"
 
 using namespace std;
 
 int main()
 {
-	bool run = true;
-
-	typedef std::mt19937 MyRNG;  
-	uint32_t seed_val = (uint32_t)time(NULL);
-	MyRNG rng;
-	rng.seed(seed_val);
-	uniform_int_distribution<uint32_t> uint_dist1_10(1, 10);
-
-	int answer = uint_dist1_10(rng);
-	int guess = 0;
-
-	while (run)
+	Account a1;
+	a1.Deposit(90);
+	cout << "After depositing $90" << " balance is " << a1.GetBalance() << endl;
+	for (auto s : a1.Report())
 	{
-		
-		cout << "Guess a number (1-10): ";
-		cin >> guess;
-
-		string eval = EvalStatement(guess, answer);
-		
-		if (guess == answer)
-		{
-			run = false;
-		}
-
-		cout << endl << "Your guess, " << guess << ", is " << eval << " the answer." << endl;
+		cout << s << endl;
 	}
+	a1.Withdraw(50);
+	if (a1.Withdraw(100))
+	{
+		cout << "Second withdraw succeeds." << endl;
+	}
+	cout << "After withdrawing $50 then $100" << " balance is " << a1.GetBalance() << endl;
+	for (auto s : a1.Report())
+	{
+		cout << s << endl;
+	}
+
 
 	return 0;
 }

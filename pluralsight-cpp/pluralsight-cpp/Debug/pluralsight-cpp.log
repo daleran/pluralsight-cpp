@@ -1,5 +1,7 @@
 ﻿  pch.cpp
+  Account.cpp
   Functions.cpp
   pluralsight-cpp.cpp
+  Transaction.cpp
   Generating Code...
   pluralsight-cpp.vcxproj -> C:\Users\sean_\Documents\GitHub\pluralsight-cpp\pluralsight-cpp\Debug\pluralsight-cpp.exe
